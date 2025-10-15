@@ -9,4 +9,13 @@ public class EncryptService {
       encryptor = new StrongTextEncryptor();
       encryptor.setPassword(System.getenv("APP_KEY"));
   }
+
+  public static String encrypt(String rawText){
+      return encryptor.encrypt(rawText);
+  }
+
+  public static String decrypt(String encryptedText){
+      return encryptor.decrypt(encryptedText);
+  }
+
 }

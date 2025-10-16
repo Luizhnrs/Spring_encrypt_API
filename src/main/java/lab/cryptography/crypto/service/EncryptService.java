@@ -1,6 +1,8 @@
 package lab.cryptography.crypto.service;
 
 import org.jasypt.util.text.StrongTextEncryptor;
+import org.springframework.stereotype.Service;
+
 
 public class EncryptService {
   private static final StrongTextEncryptor encryptor;

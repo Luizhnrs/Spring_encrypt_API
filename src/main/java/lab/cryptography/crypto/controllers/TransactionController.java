@@ -14,6 +14,7 @@ public class TransactionController {
     private final TransactionService service;
     private final ServerProperties serverProperties;
 
+
     public TransactionController(TransactionService service, ServerProperties serverProperties) {
         this.service = service;
         this.serverProperties = serverProperties;
@@ -32,5 +33,10 @@ public class TransactionController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/id")
+    public ResponseEntity<TransactionResponse> findById(@PathVariable(value = "id") Long id){
+        var response = service.findById(id);
+        return ResponseEntity.ok(response);
+    }
 
 }

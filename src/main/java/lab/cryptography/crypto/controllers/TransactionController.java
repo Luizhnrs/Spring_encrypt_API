@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(value = "/transactions")
 public class TransactionController {
     private final TransactionService service;
     private final ServerProperties serverProperties;

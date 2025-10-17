@@ -48,12 +48,12 @@ O projeto segue os princípios da **Clean Architecture**, garantindo separação
 ````
 src/
 ├── main/
-│ ├── java/com/example/encryptapi/
-│ │ ├── domain/ # Entidades e modelos
-│ │ ├── service/ # Regras de negócio
-│ │ ├── repository/ # Interfaces JPA
-│ │ ├── controller/ # Endpoints REST
-│ │ └── config/ # Configurações (Jasypt, Beans, etc.)
+│ ├── java/com/example/crypto/
+│ │ ├── entities/ 
+│ │ ├── service/ 
+│ │ ├── repository/
+│ │ ├── controller/
+│ │ ├────── dtos/
 │ └── resources/
 │ └── application.yml
 └── test/ # Testes unitários e de integração

@@ -45,7 +45,7 @@ O projeto implementa criptografia utilizando **Jasypt**, permitindo que campos s
 
 O projeto segue os princípios da **Clean Architecture**, garantindo separação de responsabilidades e fácil manutenção.
 
----
+````
 src/
 ├── main/
 │ ├── java/com/example/encryptapi/
@@ -57,7 +57,7 @@ src/
 │ └── resources/
 │ └── application.yml
 └── test/ # Testes unitários e de integração
----
+````
 
 
 ---
@@ -147,4 +147,5 @@ Focado em unir marketing e tecnologia para criar soluções seguras e escalávei
 LinkedIn
 
 GitHub
+
 

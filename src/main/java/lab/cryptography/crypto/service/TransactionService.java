@@ -6,7 +6,9 @@ import lab.cryptography.crypto.entities.TransactionEntity;
 import lab.cryptography.crypto.repository.TransactionRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class TransactionService {
@@ -22,6 +24,12 @@ public class TransactionService {
         entity.setRawCreditCard(request.creditCardToken());
         entity.setRawUserDocument(request.userDocument());
         entity.setTransactionValue(request.value());
+    }
+
+    public TransactionResponse findById(Long id){
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return TransactionResponse.fromEntity(entity);
     }
 
     public Page<TransactionResponse> listAll(int page, int pageSize){

@@ -1,9 +1,11 @@
 package lab.cryptography.crypto.service;
 
 import lab.cryptography.crypto.controllers.dto.request.CreateTransactionRequest;
+import lab.cryptography.crypto.controllers.dto.request.UpdateTransactionRequest;
 import lab.cryptography.crypto.controllers.dto.response.TransactionResponse;
 import lab.cryptography.crypto.entities.TransactionEntity;
 import lab.cryptography.crypto.repository.TransactionRepository;
+import org.hibernate.sql.Update;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -35,6 +37,21 @@ public class TransactionService {
     public Page<TransactionResponse> listAll(int page, int pageSize){
         var content = repository.findAll(PageRequest.of(page,pageSize));
         return content.map(TransactionResponse::fromEntity);
+    }
+
+    public void update(Long id, UpdateTransactionRequest request){
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        entity.setTransactionValue(request.value());
+        repository.save(entity);
+    }
+
+    public void deleteById (Long id){
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        repository.deleteById(entity.getTransactionId());
     }
 
 }
